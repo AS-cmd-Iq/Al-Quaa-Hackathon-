@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="موارد القوع"/>
+<meta name="theme-color" content="#0F3D28"/>
+<title>موارد القوع — Mawared Al Quaa</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --sand-50:#FDF8F0;--sand-100:#F7EED8;--sand-200:#EDD9A3;--sand-300:#D4A843;
+  --green-900:#0A2718;--green-800:#0F3D28;--green-700:#1B4F35;--green-600:#1B7A54;
+  --green-100:#D4EDE1;--green-50:#EBF7F1;
+  --amber:#C8860A;--amber-light:#FEF3C7;--amber-dark:#92400E;
+  --red:#BE123C;--red-light:#FFF1F2;
+  --blue:#185FA5;--blue-light:#DBEAFE;
+  --text:#1A1401;--text-sec:#5C4F2A;--text-muted:#9A8860;
+  --white:#FFFEF9;--border:rgba(180,140,60,0.18);
+  --r:14px;--r-lg:22px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bot:env(safe-area-inset-bottom,0px);
+}
+html{height:100%;-webkit-text-size-adjust:100%}
+body{
+  height:100%;
+  font-family:'IBM Plex Sans Arabic','IBM Plex Sans',sans-serif;
+  background:var(--sand-50);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.6;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+body.lang-en{direction:ltr;font-family:'IBM Plex Sans',sans-serif}
+body.lang-ar .en-text{display:none!important}
+body.lang-en .ar-text{display:none!important}
+
+/* ── PAGES ── */
+.page{display:none;position:fixed;inset:0;flex-direction:column;background:var(--sand-50);overflow:hidden}
+.page.active{display:flex}
+.page-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 1rem}
+.page-body.pad{padding-top:.75rem}
+.page-body.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem 1.5rem}
+.page-body::-webkit-scrollbar{display:none}
+
+/* ── SPLASH ── */
+#page-splash{background:var(--green-900);justify-content:flex-end}
+.splash-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.splash-content{position:relative;z-index:2;padding:0 1.5rem calc(2.5rem + var(--safe-bot));display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.logo-wrap{display:flex;align-items:center;gap:14px;margin-bottom:1.5rem}
+.logo-mark{width:64px;height:64px;background:linear-gradient(145deg,var(--green-600),var(--green-700));border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:var(--sand-200);border:1.5px solid rgba(212,168,67,0.35);box-shadow:0 8px 28px rgba(0,0,0,0.45)}
+.logo-mark.sm{width:40px;height:40px;font-size:19px;border-radius:11px;box-shadow:none}
+.logo-ar{display:block;font-size:26px;font-weight:700;color:var(--sand-100);line-height:1.2}
+.logo-en{display:block;font-size:11px;color:rgba(237,217,163,0.55);margin-top:1px;letter-spacing:1.5px;text-transform:uppercase}
+.splash-tag{font-size:32px;font-weight:700;color:var(--sand-100);margin-bottom:.4rem}
+.splash-sub{font-size:15px;color:rgba(237,217,163,0.65);margin-bottom:2.5rem;line-height:1.55}
+.splash-btns{width:100%;display:flex;flex-direction:column;gap:11px;margin-bottom:1.5rem}
+.lang-pill{background:none;border:1px solid rgba(212,168,67,0.3);color:rgba(237,217,163,0.75);padding:8px 24px;border-radius:20px;font-size:14px;cursor:pointer;font-family:inherit}
+
+/* ── HEADER ── */
+.hdr{display:flex;align-items:center;padding:12px 16px;background:var(--white);border-bottom:1px solid var(--border);gap:10px;flex-shrink:0;min-height:58px;padding-top:calc(12px + var(--safe-top))}
+.hdr h2{flex:1;font-size:17px;font-weight:700;color:var(--text)}
+.hdr-home{background:var(--green-800);border:none;padding:14px 16px 12px;padding-top:calc(14px + var(--safe-top))}
+.greet-name{font-size:17px;font-weight:700;color:var(--sand-100)}
+.greet-loc{font-size:12px;color:rgba(237,217,163,0.6);display:flex;align-items:center;gap:3px;margin-top:2px}
+.hdr-right{display:flex;gap:8px}
+.ico-btn{width:38px;height:38px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;background:rgba(255,255,255,0.13);color:var(--sand-200);position:relative;flex-shrink:0}
+.ico-btn.dark{background:var(--green-50);color:var(--green-700)}
+.ndot{position:absolute;top:7px;right:7px;width:8px;height:8px;background:var(--sand-300);border-radius:50%;border:2px solid var(--green-800)}
+.back-btn{background:none;border:none;cursor:pointer;color:var(--text-sec);font-size:22px;display:flex;align-items:center;padding:2px;flex-shrink:0}
+body.lang-ar .back-btn i{transform:scaleX(-1)}
+body.lang-en .hdr-arr{transform:scaleX(-1)}
+
+/* ── HOME BAND ── */
+.home-band{background:var(--green-800);padding:0 1rem 14px;flex-shrink:0}
+.srch-wrap{position:relative}
+.srch-ico{position:absolute;top:50%;transform:translateY(-50%);font-size:17px;color:rgba(237,217,163,0.5);pointer-events:none}
+body.lang-ar .srch-ico{right:13px}
+body.lang-en .srch-ico{left:13px}
+.srch-inp{width:100%;padding:12px 14px;border:none;border-radius:28px;background:rgba(255,254,249,0.11);font-size:15px;font-family:inherit;color:var(--sand-100);backdrop-filter:blur(6px)}
+.srch-inp::placeholder{color:rgba(237,217,163,0.45)}
+body.lang-ar .srch-inp{padding-right:42px}
+body.lang-en .srch-inp{padding-left:42px}
+
+/* ── URGENT BANNER ── */
+.urg-bar{margin:.75rem 1rem 0;background:linear-gradient(135deg,var(--amber-light),#FDE68A);border:1px solid rgba(200,134,10,0.4);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.urg-bar i.bolt{color:var(--amber);font-size:22px;flex-shrink:0}
+.urg-txt{flex:1}
+.urg-txt strong{display:block;font-size:13px;font-weight:700;color:var(--amber-dark)}
+.urg-txt span{display:block;font-size:11px;color:#92400E;opacity:.85;margin-top:1px}
+
+/* ── ACTION GRID ── */
+.act-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;padding:.75rem 1rem}
+.act-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 14px 16px;text-align:center;cursor:pointer;position:relative;overflow:hidden;transition:transform .1s}
+.act-card:active{transform:scale(.97)}
+.act-card i{font-size:32px;display:block;margin-bottom:9px}
+.act-card strong{display:block;font-size:14px;font-weight:700;color:var(--text)}
+.act-card small{display:block;font-size:11px;color:var(--text-muted);margin-top:2px}
+.act-card.need{border-top:3px solid #C85A30}.act-card.need i{color:#C85A30}
+.act-card.offer{border-top:3px solid var(--green-600)}.act-card.offer i{color:var(--green-600)}
+.act-card.browse{border-top:3px solid var(--blue)}.act-card.browse i{color:var(--blue)}
+.act-card.urgbtn{border-top:3px solid var(--amber)}.act-card.urgbtn i{color:var(--amber)}
+
+/* ── SECTION HDR ── */
+.sec-hdr{display:flex;align-items:center;padding:4px 1rem;margin-top:4px}
+.sec-hdr h3{flex:1;font-size:15px;font-weight:700;color:var(--text)}
+.see-all{font-size:13px;color:var(--green-600);cursor:pointer;font-weight:600}
+
+/* ── CAT PILLS ── */
+.cats{display:flex;gap:8px;padding:7px 1rem 9px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0}
+.cats::-webkit-scrollbar{display:none}
+.cpill{display:flex;align-items:center;gap:5px;padding:8px 15px;border-radius:20px;border:1px solid var(--border);background:var(--white);font-size:13px;white-space:nowrap;cursor:pointer;color:var(--text-sec);flex-shrink:0;font-weight:600;transition:all .12s}
+.cpill i{font-size:15px}
+.cpill.on{background:var(--green-700);color:var(--sand-100);border-color:var(--green-700);box-shadow:0 2px 10px rgba(27,79,53,.3)}
+
+/* ── LISTING CARD ── */
+.lcard{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:15px;margin:0 1rem 11px;display:flex;align-items:center;gap:13px;cursor:pointer;transition:transform .1s;box-shadow:0 1px 5px rgba(10,39,24,.06)}
+.lcard:active{transform:scale(.99)}
+.lci{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.lci.water{background:var(--blue-light);color:var(--blue)}
+.lci.gen{background:var(--amber-light);color:var(--amber)}
+.lci.vehicle{background:var(--green-100);color:var(--green-700)}
+.lci.farm{background:#ECFDF5;color:#065F46}
+.lci.event{background:#F3E8FF;color:#7C3AED}
+.lci.labor{background:#FEF3C7;color:#92400E}
+.lci.cold{background:#E0F2FE;color:#0369A1}
+.lci.driver{background:var(--red-light);color:var(--red)}
+.lci-info{flex:1;min-width:0}
+.lci-name{font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lci-det{font-size:12px;color:var(--text-muted);margin-top:1px}
+.lci-tags{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
+.ltag{font-size:11px;padding:2px 9px;border-radius:10px;background:var(--green-50);color:var(--green-800);font-weight:600;border:1px solid var(--green-100)}
+.lci-meta{text-align:center;flex-shrink:0}
+.lci-dist{font-size:12px;font-weight:700;color:var(--text-sec)}
+.lci-price{font-size:13px;color:var(--green-600);font-weight:700;margin-top:3px}
+
+/* ── TIP CARD ── */
+.tip-card{margin:.5rem 1rem 1rem;background:linear-gradient(135deg,#ECFDF5,#D4EDE1);border:1px solid rgba(27,122,84,.25);border-radius:var(--r-lg);padding:15px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.tip-card i.bulb{font-size:26px;color:var(--green-600);flex-shrink:0}
+.tip-card strong{display:block;font-size:14px;font-weight:700;color:var(--green-900)}
+.tip-card p{font-size:12px;color:var(--green-700);margin-top:2px}
+
+/* ── BOTTOM NAV ── */
+.bnav{display:flex;border-top:1px solid var(--border);background:var(--white);flex-shrink:0;padding-bottom:var(--safe-bot)}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px 7px;background:none;border:none;cursor:pointer;font-family:inherit;gap:3px;min-height:60px}
+.ni i{font-size:24px;color:var(--text-muted)}
+.ni span{font-size:10px;color:var(--text-muted);font-weight:500}
+.ni.on i{color:var(--green-700)}
+.ni.on span{color:var(--green-700)}
+.ni-add-wrap{display:flex;align-items:center;justify-content:center;flex:1}
+.ni-add{width:54px;height:54px;background:linear-gradient(145deg,var(--green-600),var(--green-700));border-radius:50%;border:none;margin-top:-22px;box-shadow:0 4px 18px rgba(27,79,53,.5);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.ni-add i{color:var(--sand-100);font-size:28px}
+
+/* ── FORMS ── */
+.form-g{margin-bottom:1.1rem}
+.form-g label{display:block;font-size:12px;font-weight:700;color:var(--text-sec);margin-bottom:7px;text-transform:uppercase;letter-spacing:.5px}
+input,select,textarea{width:100%;padding:13px 15px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--white);font-size:16px;font-family:inherit;color:var(--text);appearance:none;-webkit-appearance:none;transition:border-color .15s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green-600);box-shadow:0 0 0 3px rgba(27,122,84,.12)}
+textarea{resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 16px;border-radius:20px;border:1.5px solid var(--border);background:var(--white);font-size:14px;cursor:pointer;color:var(--text-sec);font-family:inherit;font-weight:600;transition:all .12s}
+.chip.on{background:var(--green-700);color:var(--sand-100);border-color:var(--green-700)}
+
+/* ── TRUST BOX ── */
+.trust-box{background:var(--green-50);border:1.5px solid var(--green-100);border-radius:var(--r);padding:15px;margin-bottom:1.1rem}
+.trust-ttl{font-size:12px;font-weight:700;color:var(--green-900);margin-bottom:11px;text-transform:uppercase;letter-spacing:.5px}
+.trust-opts{display:flex;flex-direction:column;gap:12px}
+.trust-opt{display:flex;align-items:center;gap:11px;font-size:15px;color:var(--text-sec);cursor:pointer}
+.trust-opt input{accent-color:var(--green-700);width:18px;height:18px;flex-shrink:0}
+.trust-opt i{font-size:18px;color:var(--green-600)}
+
+/* ── REGISTER ── */
+.reg-hero{background:linear-gradient(135deg,var(--green-800),var(--green-900));border-radius:var(--r-lg);padding:18px;text-align:center;margin-bottom:1.2rem}
+.reg-hero p{color:rgba(237,217,163,.85);font-size:14px}
+
+/* ── OTP ── */
+.otp-wrap{background:var(--green-50);border-radius:var(--r-lg);padding:2rem;width:100%;text-align:center;margin-bottom:1rem}
+.otp-ico{font-size:56px;color:var(--green-600);margin-bottom:1rem;display:block}
+.phone-num{font-size:22px;font-weight:700;margin-bottom:1.5rem}
+.otp-row{display:flex;gap:12px;justify-content:center;direction:ltr}
+.otp-box{width:62px;height:70px;text-align:center;font-size:28px;font-weight:700;border-radius:var(--r);border:2px solid var(--border)}
+.otp-box:focus{border-color:var(--green-600)}
+
+/* ── BUTTONS ── */
+.btn{border:none;border-radius:var(--r);padding:15px 24px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:all .12s;width:100%;margin-top:5px}
+.btn:active{transform:scale(.98)}
+.btn-green{background:linear-gradient(145deg,var(--green-600),var(--green-700));color:var(--sand-100);box-shadow:0 4px 16px rgba(27,79,53,.35)}
+.btn-ghost-dark{background:rgba(237,217,163,.1);color:rgba(237,217,163,.85);border:1px solid rgba(237,217,163,.25)}
+.btn-ghost{background:var(--white);color:var(--text-sec);border:1.5px solid var(--border)}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 2px 10px rgba(37,211,102,.3)}
+.btn-confirm{background:linear-gradient(145deg,var(--green-600),var(--green-700));color:var(--sand-100);box-shadow:0 2px 10px rgba(27,79,53,.3)}
+.btn-link{background:none;border:none;color:var(--green-600);font-size:15px;cursor:pointer;font-family:inherit;font-weight:700;padding:10px 0;display:block;text-align:center}
+.row-btns{display:flex;gap:9px;margin-top:0}
+.row-btns .btn{margin-top:0;flex:1}
+
+/* ── MATCHES ── */
+.res-meta{font-size:13px;color:var(--text-muted);margin-bottom:1rem}
+.mcard{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:16px;margin-bottom:13px;box-shadow:0 2px 10px rgba(10,39,24,.06)}
+.mcard.best{border-color:var(--green-600);box-shadow:0 4px 20px rgba(27,122,84,.18)}
+.best-badge{display:inline-block;background:linear-gradient(135deg,var(--green-600),var(--green-700));color:var(--sand-100);font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:11px}
+.m-top{display:flex;align-items:center;gap:12px;margin-bottom:9px}
+.m-av{width:48px;height:48px;border-radius:50%;background:var(--green-100);color:var(--green-800);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0}
+.m-av.b{background:var(--amber-light);color:var(--amber-dark)}
+.m-av.c{background:var(--blue-light);color:var(--blue)}
+.m-info{flex:1}
+.m-info strong{display:block;font-size:16px;font-weight:700}
+.m-info p{font-size:12px;color:var(--text-muted);margin-top:2px}
+.m-price{font-size:22px;font-weight:800;color:var(--green-700);text-align:center;line-height:1.1}
+.m-price small{font-size:12px;font-weight:400;color:var(--text-muted);display:block}
+.m-stars{font-size:13px;color:var(--text-muted);margin-bottom:12px;display:flex;align-items:center;gap:5px}
+.m-stars i{color:#F59E0B;font-size:15px}
+
+/* ── CONFIRMED ── */
+.conf-ico{font-size:88px;color:var(--green-600);margin-bottom:1.2rem}
+.conf-page h2{font-size:28px;font-weight:800;margin-bottom:.5rem}
+.conf-page>p{color:var(--text-sec);font-size:15px;margin-bottom:1.5rem;line-height:1.6}
+.conf-detail{width:100%;background:var(--green-50);border-radius:var(--r);padding:16px;margin-bottom:1.5rem;border:1px solid var(--green-100)}
+.cd-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--green-100)}
+.cd-row:last-child{border:none}
+.cd-row span{font-size:13px;color:var(--text-muted)}
+.cd-row strong{font-size:15px;font-weight:700}
+
+/* ── BIZ TIP ── */
+.biz-tip{background:linear-gradient(135deg,#ECFDF5,#D4EDE1);border:1.5px solid rgba(27,122,84,.25);border-radius:var(--r);padding:15px;margin-bottom:1.1rem;display:none}
+.biz-tip.show{display:block}
+.biz-tip-hd{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--green-900);margin-bottom:6px}
+.biz-tip-hd i{font-size:19px;color:var(--green-600)}
+.biz-tip p{font-size:13px;color:var(--green-700);margin-top:4px}
+
+/* ── PROFILE ── */
+.prof-hero{background:linear-gradient(135deg,var(--green-800),var(--green-900));border-radius:var(--r-lg);padding:20px;display:flex;align-items:center;gap:15px;margin-bottom:1.2rem}
+.prof-av{width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:var(--sand-100);flex-shrink:0;border:2px solid rgba(212,168,67,.35)}
+.prof-hero h3{font-size:19px;font-weight:700;color:var(--sand-100)}
+.prof-hero p{font-size:13px;color:rgba(237,217,163,.7);margin-top:3px;display:flex;align-items:center;gap:5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:1.4rem}
+.stat{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:14px;text-align:center}
+.stat-n{display:block;font-size:26px;font-weight:800;color:var(--green-700)}
+.stat small{display:block;font-size:11px;color:var(--text-muted);margin-top:3px;font-weight:600}
+.menu{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+.mitem{display:flex;align-items:center;gap:13px;padding:16px;border-bottom:1px solid var(--border);cursor:pointer;font-size:15px;color:var(--text);font-weight:500;min-height:56px}
+.mitem:last-child{border:none}
+.mitem .mi{font-size:20px;color:var(--green-600);width:24px;text-align:center;flex-shrink:0}
+.mitem .ma{font-size:17px;color:var(--text-muted);margin-right:auto}
+body.lang-en .mitem .ma{margin-right:0;margin-left:auto;transform:scaleX(-1)}
+.mitem.red{color:var(--red)}.mitem.red .mi{color:var(--red)}
+
+/* ── NOTIFICATIONS ── */
+.nitem{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid var(--border)}
+.ndot2{width:10px;height:10px;border-radius:50%;background:var(--green-600);margin-top:5px;flex-shrink:0}
+.ndot2.read{background:var(--border)}
+.ntext{font-size:14px;color:var(--text)}
+.ntime{font-size:12px;color:var(--text-muted);margin-top:3px}
+
+/* ── URGENT PAGE ── */
+.ucard{background:var(--white);border:1.5px solid rgba(200,134,10,.35);border-radius:var(--r-lg);padding:15px;margin-bottom:13px}
+.uc-top{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.uc-ico{width:46px;height:46px;background:var(--amber-light);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--amber);flex-shrink:0}
+.uc-name strong{display:block;font-size:15px;font-weight:700}
+.uc-name p{font-size:12px;color:var(--text-muted)}
+.uc-time{font-size:12px;color:var(--red);font-weight:700;margin-right:auto}
+body.lang-en .uc-time{margin-right:0;margin-left:auto}
+
+/* ── BROWSE STICKY ── */
+.sticky-srch{position:sticky;top:0;z-index:5;background:var(--sand-50);padding:9px 1rem;border-bottom:1px solid var(--border)}
+.sticky-srch .srch-ico{color:var(--text-muted)}
+.sticky-srch input{background:var(--white);color:var(--text);border:1.5px solid var(--border);border-radius:24px;padding:11px 14px;font-size:15px}
+body.lang-ar .sticky-srch input{padding-right:40px}
+body.lang-en .sticky-srch input{padding-left:40px}
+
+.sp{height:1rem}
+.sp-lg{height:90px}
+</style>
+</head>
+<body class="lang-ar">
+
+<!-- ══ SPLASH ══ -->
+<div id="pg-splash" class="page active">
+  <div class="splash-bg">
+    <svg width="100%" height="100%" viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="45" cy="80" r="1.5" fill="rgba(237,217,163,0.7)"/><circle cx="130" cy="50" r="1" fill="rgba(237,217,163,0.5)"/><circle cx="220" cy="90" r="2" fill="rgba(237,217,163,0.6)"/><circle cx="300" cy="40" r="1.5" fill="rgba(237,217,163,0.8)"/><circle cx="360" cy="100" r="1" fill="rgba(237,217,163,0.4)"/><circle cx="80" cy="140" r="1" fill="rgba(237,217,163,0.5)"/><circle cx="170" cy="160" r="1.5" fill="rgba(237,217,163,0.6)"/><circle cx="340" cy="130" r="1" fill="rgba(237,217,163,0.7)"/><circle cx="260" cy="180" r="2" fill="rgba(237,217,163,0.4)"/><circle cx="100" cy="200" r="1" fill="rgba(237,217,163,0.6)"/><circle cx="380" cy="60" r="1.5" fill="rgba(237,217,163,0.5)"/><circle cx="200" cy="200" r="1" fill="rgba(237,217,163,0.7)"/><circle cx="60" cy="250" r="1.5" fill="rgba(237,217,163,0.4)"/><circle cx="310" cy="220" r="1" fill="rgba(237,217,163,0.6)"/>
+      <path d="M0 844 L0 600 Q80 540 180 570 Q280 600 360 540 Q380 525 390 520 L390 844 Z" fill="rgba(212,168,67,0.1)"/>
+      <path d="M0 844 L0 650 Q100 610 200 635 Q300 660 390 620 L390 844 Z" fill="rgba(212,168,67,0.08)"/>
+      <path d="M0 844 L0 710 Q120 680 230 700 Q320 718 390 695 L390 844 Z" fill="rgba(212,168,67,0.06)"/>
+      <g fill="rgba(255,255,255,0.04)"><rect x="35" y="530" width="5" height="80"/><ellipse cx="37" cy="528" rx="22" ry="10"/><ellipse cx="37" cy="524" rx="18" ry="8" transform="rotate(-18,37,524)"/><ellipse cx="37" cy="524" rx="18" ry="8" transform="rotate(18,37,524)"/></g>
+      <g fill="rgba(255,255,255,0.04)"><rect x="340" y="500" width="5" height="90"/><ellipse cx="342" cy="498" rx="24" ry="11"/><ellipse cx="342" cy="494" rx="20" ry="9" transform="rotate(-22,342,494)"/><ellipse cx="342" cy="494" rx="20" ry="9" transform="rotate(22,342,494)"/></g>
+    </svg>
+  </div>
+  <div class="splash-content">
+    <div class="logo-wrap">
+      <div class="logo-mark">م</div>
+      <div><span class="logo-ar">موارد القوع</span><span class="logo-en">MAWARED AL QUAA</span></div>
+    </div>
+    <p class="splash-tag ar-text">شارك. اطلب. وفّر.</p>
+    <p class="splash-tag en-text">Share. Request. Save.</p>
+    <p class="splash-sub ar-text">منصة مشاركة الموارد المحلية<br/>لسكان القاع — العين</p>
+    <p class="splash-sub en-text">Local resource sharing<br/>for Al Quaa residents — Al Ain</p>
+    <div class="splash-btns">
+      <button class="btn btn-green" onclick="go('pg-register')"><span class="ar-text">ابدأ الآن</span><span class="en-text">Get started</span> <i class="ti ti-arrow-left"></i></button>
+      <button class="btn btn-ghost-dark" onclick="go('pg-home')"><span class="ar-text">تصفح بدون تسجيل</span><span class="en-text">Browse without account</span></button>
+    </div>
+    <button class="lang-pill" onclick="toggleLang()"><span class="ar-text">English</span><span class="en-text">عربي</span></button>
+  </div>
+</div>
+
+<!-- ══ REGISTER ══ -->
+<div id="pg-register" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-splash')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">إنشاء حساب</span><span class="en-text">Create account</span></h2></div>
+  <div class="page-body pad">
+    <div class="reg-hero"><p class="ar-text">للسكان المعتمدين في القاع فقط</p><p class="en-text">For verified Al Quaa residents only</p></div>
+    <div class="form-g"><label><span class="ar-text">الاسم الكامل</span><span class="en-text">Full name</span></label><input type="text" placeholder-ar="مثلاً: محمد العلي" placeholder-en="e.g. Mohammed Al Ali"/></div>
+    <div class="form-g"><label><span class="ar-text">رقم الجوال</span><span class="en-text">Mobile number</span></label><input type="tel" placeholder="+971 5X XXX XXXX"/></div>
+    <div class="form-g">
+      <label><span class="ar-text">المنطقة في القاع</span><span class="en-text">Area in Al Quaa</span></label>
+      <select><option>القاع المركز / Al Quaa Centre</option><option>المزارع الشمالية / North Farms</option><option>المزارع الجنوبية / South Farms</option><option>حي السكن / Residential Area</option></select>
+    </div>
+    <div class="form-g">
+      <label><span class="ar-text">أنت</span><span class="en-text">You are</span></label>
+      <div class="chips">
+        <div class="chip on"><span class="ar-text">ساكن</span><span class="en-text">Resident</span></div>
+        <div class="chip"><span class="ar-text">مزارع</span><span class="en-text">Farmer</span></div>
+        <div class="chip"><span class="ar-text">صاحب عمل</span><span class="en-text">Business</span></div>
+      </div>
+    </div>
+    <button class="btn btn-green" onclick="go('pg-verify')"><span class="ar-text">إرسال رمز التحقق</span><span class="en-text">Send verification code</span></button>
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ══ VERIFY ══ -->
+<div id="pg-verify" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-register')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">تحقق من رقمك</span><span class="en-text">Verify your number</span></h2></div>
+  <div class="page-body center">
+    <div class="otp-wrap">
+      <i class="ti ti-device-mobile-message otp-ico"></i>
+      <p style="color:var(--text-sec);margin-bottom:5px"><span class="ar-text">أرسلنا رمزاً إلى</span><span class="en-text">We sent a code to</span></p>
+      <div class="phone-num">+971 50 123 4567</div>
+      <div class="otp-row"><input type="tel" maxlength="1" class="otp-box"/><input type="tel" maxlength="1" class="otp-box"/><input type="tel" maxlength="1" class="otp-box"/><input type="tel" maxlength="1" class="otp-box"/></div>
+    </div>
+    <button class="btn btn-green" onclick="go('pg-home')"><span class="ar-text">تأكيد الدخول</span><span class="en-text">Confirm</span></button>
+    <button class="btn-link"><span class="ar-text">إعادة إرسال الرمز</span><span class="en-text">Resend code</span></button>
+  </div>
+</div>
+
+<!-- ══ HOME ══ -->
+<div id="pg-home" class="page">
+  <div class="hdr hdr-home">
+    <div style="display:flex;align-items:center;gap:11px;flex:1">
+      <div class="logo-mark sm">م</div>
+      <div><p class="greet-name ar-text">مرحباً، محمد</p><p class="greet-name en-text">Welcome, Mohammed</p><p class="greet-loc"><i class="ti ti-map-pin" style="font-size:12px"></i> القاع، العين</p></div>
+    </div>
+    <div class="hdr-right">
+      <button class="ico-btn" onclick="toggleLang()"><i class="ti ti-language"></i></button>
+      <button class="ico-btn" onclick="go('pg-notifs')"><i class="ti ti-bell"></i><span class="ndot"></span></button>
+    </div>
+  </div>
+  <div class="home-band">
+    <div class="srch-wrap"><i class="ti ti-search srch-ico"></i><input type="text" class="srch-inp" placeholder-ar="ابحث عن مورد..." placeholder-en="Search for a resource..." onclick="go('pg-browse')" readonly/></div>
+  </div>
+  <div class="page-body" style="padding-top:0">
+    <div class="urg-bar" onclick="go('pg-urgent')">
+      <i class="ti ti-bolt bolt"></i>
+      <div class="urg-txt"><strong class="ar-text">طلبات عاجلة اليوم — ٣</strong><strong class="en-text">Urgent today — 3</strong><span class="ar-text">خزان ماء · مولد · سائق</span><span class="en-text">Water tanker · Generator · Driver</span></div>
+      <i class="ti ti-chevron-left hdr-arr" style="color:var(--amber);font-size:18px"></i>
+    </div>
+    <div class="act-grid">
+      <div class="act-card need" onclick="go('pg-request')"><i class="ti ti-hand-stop"></i><strong class="ar-text">أحتاج شيئاً</strong><strong class="en-text">I need something</strong><small class="ar-text">اطلب موردًا</small><small class="en-text">Request a resource</small></div>
+      <div class="act-card offer" onclick="go('pg-offer')"><i class="ti ti-hand-finger"></i><strong class="ar-text">أستطيع تقديم</strong><strong class="en-text">I can offer</strong><small class="ar-text">أضف عرضك</small><small class="en-text">Add your listing</small></div>
+      <div class="act-card browse" onclick="go('pg-browse')"><i class="ti ti-map-search"></i><strong class="ar-text">تصفح قريباً</strong><strong class="en-text">Browse nearby</strong><small class="ar-text">الموارد المتاحة</small><small class="en-text">Available now</small></div>
+      <div class="act-card urgbtn" onclick="go('pg-urgent')"><i class="ti ti-clock-exclamation"></i><strong class="ar-text">عاجل اليوم</strong><strong class="en-text">Urgent today</strong><small class="ar-text">٣ طلبات مفتوحة</small><small class="en-text">3 open requests</small></div>
+    </div>
+    <div class="sec-hdr"><h3 class="ar-text">الفئات</h3><h3 class="en-text">Categories</h3></div>
+    <div class="cats">
+      <div class="cpill on" onclick="fcat(this,'all')"><i class="ti ti-grid-dots"></i><span class="ar-text">الكل</span><span class="en-text">All</span></div>
+      <div class="cpill" onclick="fcat(this,'water')"><i class="ti ti-droplet"></i><span class="ar-text">مياه</span><span class="en-text">Water</span></div>
+      <div class="cpill" onclick="fcat(this,'gen')"><i class="ti ti-plug"></i><span class="ar-text">مولدات</span><span class="en-text">Generators</span></div>
+      <div class="cpill" onclick="fcat(this,'vehicle')"><i class="ti ti-truck"></i><span class="ar-text">مركبات</span><span class="en-text">Vehicles</span></div>
+      <div class="cpill" onclick="fcat(this,'farm')"><i class="ti ti-plant-2"></i><span class="ar-text">مزرعة</span><span class="en-text">Farm</span></div>
+      <div class="cpill" onclick="fcat(this,'event')"><i class="ti ti-tent"></i><span class="ar-text">مناسبات</span><span class="en-text">Events</span></div>
+      <div class="cpill" onclick="fcat(this,'labor')"><i class="ti ti-users"></i><span class="ar-text">عمالة</span><span class="en-text">Labor</span></div>
+    </div>
+    <div class="sec-hdr"><h3 class="ar-text">متاح الآن</h3><h3 class="en-text">Available now</h3><a class="see-all ar-text" onclick="go('pg-browse')">عرض الكل</a><a class="see-all en-text" onclick="go('pg-browse')">See all</a></div>
+    <div id="home-list"></div>
+    <div class="tip-card" onclick="go('pg-offer')">
+      <i class="ti ti-bulb bulb"></i>
+      <div><strong class="ar-text">ابدأ مشروعك من ما تملكه</strong><strong class="en-text">Start a business from what you own</strong><p class="ar-text">أضف ما لديك واكتشف فرص الكسب</p><p class="en-text">List what you own and earn from it</p></div>
+      <i class="ti ti-chevron-left hdr-arr" style="color:var(--green-600);font-size:18px;flex-shrink:0"></i>
+    </div>
+    <div class="sp-lg"></div>
+  </div>
+  <nav class="bnav">
+    <button class="ni on" onclick="go('pg-home');setNav(this)"><i class="ti ti-home"></i><span class="ar-text">الرئيسية</span><span class="en-text">Home</span></button>
+    <button class="ni" onclick="go('pg-browse');setNav(this)"><i class="ti ti-search"></i><span class="ar-text">تصفح</span><span class="en-text">Browse</span></button>
+    <div class="ni-add-wrap"><button class="ni-add" onclick="go('pg-request')"><i class="ti ti-plus"></i></button></div>
+    <button class="ni" onclick="go('pg-offer');setNav(this)"><i class="ti ti-hand-finger"></i><span class="ar-text">عروضي</span><span class="en-text">My offers</span></button>
+    <button class="ni" onclick="go('pg-profile');setNav(this)"><i class="ti ti-user"></i><span class="ar-text">حسابي</span><span class="en-text">Profile</span></button>
+  </nav>
+</div>
+
+<!-- ══ BROWSE ══ -->
+<div id="pg-browse" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">تصفح الموارد</span><span class="en-text">Browse resources</span></h2><button class="ico-btn dark"><i class="ti ti-adjustments-horizontal"></i></button></div>
+  <div class="sticky-srch"><div class="srch-wrap"><i class="ti ti-search srch-ico"></i><input type="text" placeholder-ar="ابحث..." placeholder-en="Search..." oninput="lsrch(this.value)"/></div></div>
+  <div class="cats" style="border-bottom:1px solid var(--border);padding-top:4px">
+    <div class="cpill on" onclick="fcat(this,'all','b')"><i class="ti ti-grid-dots"></i><span class="ar-text">الكل</span><span class="en-text">All</span></div>
+    <div class="cpill" onclick="fcat(this,'water','b')"><i class="ti ti-droplet"></i><span class="ar-text">مياه</span><span class="en-text">Water</span></div>
+    <div class="cpill" onclick="fcat(this,'gen','b')"><i class="ti ti-plug"></i><span class="ar-text">مولدات</span><span class="en-text">Gen</span></div>
+    <div class="cpill" onclick="fcat(this,'vehicle','b')"><i class="ti ti-truck"></i><span class="ar-text">مركبات</span><span class="en-text">Vehicles</span></div>
+    <div class="cpill" onclick="fcat(this,'farm','b')"><i class="ti ti-plant-2"></i><span class="ar-text">مزرعة</span><span class="en-text">Farm</span></div>
+    <div class="cpill" onclick="fcat(this,'event','b')"><i class="ti ti-tent"></i><span class="ar-text">مناسبات</span><span class="en-text">Events</span></div>
+    <div class="cpill" onclick="fcat(this,'labor','b')"><i class="ti ti-users"></i><span class="ar-text">عمالة</span><span class="en-text">Labor</span></div>
+  </div>
+  <div class="page-body pad" id="browse-list"></div>
+</div>
+
+<!-- ══ REQUEST ══ -->
+<div id="pg-request" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">اطلب موردًا</span><span class="en-text">Request a resource</span></h2></div>
+  <div class="page-body pad">
+    <div class="form-g"><label><span class="ar-text">نوع المورد</span><span class="en-text">Resource type</span></label><select><option>مولد كهربائي / Generator</option><option>خزان مياه / Water tanker</option><option>مركبة 4×4 / 4×4 vehicle</option><option>أدوات مزرعة / Farm tools</option><option>خيمة وكراسي / Tent &amp; chairs</option><option>عمال مؤقتون / Temp workers</option><option>سائق / Driver</option><option>نقل مبرد / Cold transport</option></select></div>
+    <div class="form-g"><label><span class="ar-text">متى تحتاجه؟</span><span class="en-text">When?</span></label><div class="chips"><div class="chip on"><span class="ar-text">الليلة</span><span class="en-text">Tonight</span></div><div class="chip"><span class="ar-text">غداً</span><span class="en-text">Tomorrow</span></div><div class="chip"><span class="ar-text">هذا الأسبوع</span><span class="en-text">This week</span></div><div class="chip"><span class="ar-text">مرن</span><span class="en-text">Flexible</span></div></div></div>
+    <div class="form-g"><label><span class="ar-text">الميزانية (درهم)</span><span class="en-text">Budget (AED)</span></label><input type="number" placeholder-ar="مثلاً: 100" placeholder-en="e.g. 100"/></div>
+    <div class="form-g"><label><span class="ar-text">التوصيل؟</span><span class="en-text">Delivery?</span></label><div class="chips"><div class="chip on"><span class="ar-text">نعم، إلى موقعي</span><span class="en-text">Yes, deliver to me</span></div><div class="chip"><span class="ar-text">سأستلم بنفسي</span><span class="en-text">I'll collect</span></div></div></div>
+    <div class="trust-box"><p class="trust-ttl ar-text">من يرى طلبك؟</p><p class="trust-ttl en-text">Who sees your request?</p><div class="trust-opts"><label class="trust-opt"><input type="radio" name="tr"/><i class="ti ti-home"></i><span class="ar-text">العائلة والجيران فقط</span><span class="en-text">Family &amp; neighbors only</span></label><label class="trust-opt"><input type="radio" name="tr" checked/><i class="ti ti-shield-check"></i><span class="ar-text">سكان القاع المعتمدون</span><span class="en-text">Verified Al Quaa residents</span></label><label class="trust-opt"><input type="radio" name="tr"/><i class="ti ti-world"></i><span class="ar-text">عام</span><span class="en-text">Public</span></label></div></div>
+    <button class="btn btn-green" onclick="go('pg-matches')"><span class="ar-text">بحث عن مطابقات</span><span class="en-text">Find matches</span> <i class="ti ti-search"></i></button>
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ══ MATCHES ══ -->
+<div id="pg-matches" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-request')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">٣ مطابقات</span><span class="en-text">3 matches found</span></h2></div>
+  <div class="page-body pad">
+    <p class="res-meta ar-text"><i class="ti ti-filter" style="font-size:13px"></i> مولد كهربائي · الليلة · القاع</p>
+    <p class="res-meta en-text"><i class="ti ti-filter" style="font-size:13px"></i> Generator · tonight · Al Quaa</p>
+    <div class="mcard best">
+      <div class="best-badge ar-text">⭐ الأفضل تطابقاً</div><div class="best-badge en-text">⭐ Best match</div>
+      <div class="m-top"><div class="m-av">م</div><div class="m-info"><strong>محمد المنصوري</strong><p class="ar-text">مولد ١٢ كيلوواط · ٤ كم · توصيل متاح</p><p class="en-text">Generator 12 kW · 4 km · Delivery available</p></div><div class="m-price">١٢٠<small>AED</small></div></div>
+      <div class="m-stars"><i class="ti ti-star-filled"></i> 4.9 &nbsp;·&nbsp; <span class="ar-text">٢٣ تأجيراً ناجحاً</span><span class="en-text">23 successful rentals</span></div>
+      <div class="row-btns"><button class="btn btn-wa" onclick="openWA('971501234567')"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button><button class="btn btn-confirm" onclick="go('pg-confirmed')"><span class="ar-text">تأكيد</span><span class="en-text">Confirm</span> <i class="ti ti-check"></i></button></div>
+    </div>
+    <div class="mcard">
+      <div class="m-top"><div class="m-av b">ف</div><div class="m-info"><strong class="ar-text">مزرعة فاطمة</strong><strong class="en-text">Fatima Farm</strong><p class="ar-text">مولد ٢٠ كيلوواط · ٨ كم</p><p class="en-text">Generator 20 kW · 8 km</p></div><div class="m-price">٢٠٠<small>AED</small></div></div>
+      <div class="m-stars"><i class="ti ti-star-filled"></i> 4.7 &nbsp;·&nbsp; <span class="ar-text">مزرعة معتمدة</span><span class="en-text">Verified farm</span></div>
+      <div class="row-btns"><button class="btn btn-wa" onclick="openWA('971509876543')"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button><button class="btn btn-confirm"><span class="ar-text">تأكيد</span><span class="en-text">Confirm</span></button></div>
+    </div>
+    <div class="mcard">
+      <div class="m-top"><div class="m-av c">س</div><div class="m-info"><strong>سالم الظاهري</strong><p class="ar-text">مولد + توصيل شامل · ٦ كم</p><p class="en-text">Generator + delivery · 6 km</p></div><div class="m-price">١٠٠<small>AED</small></div></div>
+      <div class="m-stars"><i class="ti ti-star-filled"></i> 4.8 &nbsp;·&nbsp; <span class="ar-text">يرد خلال ٣٠ دقيقة</span><span class="en-text">Responds in 30 min</span></div>
+      <div class="row-btns"><button class="btn btn-wa" onclick="openWA('971555432109')"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button><button class="btn btn-confirm"><span class="ar-text">تأكيد</span><span class="en-text">Confirm</span></button></div>
+    </div>
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ══ CONFIRMED ══ -->
+<div id="pg-confirmed" class="page">
+  <div class="page-body center conf-page">
+    <i class="ti ti-circle-check conf-ico"></i>
+    <h2 class="ar-text">تم التأكيد!</h2><h2 class="en-text">Confirmed!</h2>
+    <p class="ar-text">تواصل مع محمد المنصوري عبر واتساب لتنسيق التفاصيل</p>
+    <p class="en-text">Contact Mohammed via WhatsApp to coordinate details</p>
+    <div class="conf-detail">
+      <div class="cd-row"><span class="ar-text">المورد</span><span class="en-text">Resource</span><strong class="ar-text">مولد ١٢ كيلوواط</strong><strong class="en-text">Generator 12 kW</strong></div>
+      <div class="cd-row"><span class="ar-text">الموعد</span><span class="en-text">When</span><strong class="ar-text">الليلة</strong><strong class="en-text">Tonight</strong></div>
+      <div class="cd-row"><span class="ar-text">السعر</span><span class="en-text">Price</span><strong>١٢٠ AED</strong></div>
+    </div>
+    <button class="btn btn-wa" onclick="openWA('971501234567')"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button>
+    <button class="btn btn-ghost" onclick="go('pg-home')" style="margin-top:10px"><span class="ar-text">العودة للرئيسية</span><span class="en-text">Back to home</span></button>
+  </div>
+</div>
+
+<!-- ══ OFFER ══ -->
+<div id="pg-offer" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">أضف عرضك</span><span class="en-text">Add your listing</span></h2></div>
+  <div class="page-body pad">
+    <div class="form-g"><label><span class="ar-text">ماذا تملك؟</span><span class="en-text">What do you have?</span></label><select id="offer-type" onchange="bizTip()"><option value="vehicle">بيك أب / Pickup truck</option><option value="water">خزان مياه / Water tanker</option><option value="gen">مولد / Generator</option><option value="farm">أدوات مزرعة / Farm tools</option><option value="event">خيمة وكراسي / Tent &amp; chairs</option><option value="cold">تخزين مبرد / Cold storage</option><option value="labor">مهارة / Skill or service</option></select></div>
+    <div class="form-g"><label><span class="ar-text">متاح متى؟</span><span class="en-text">Available when?</span></label><div class="chips"><div class="chip on"><span class="ar-text">المساء</span><span class="en-text">Evenings</span></div><div class="chip"><span class="ar-text">نهايات الأسبوع</span><span class="en-text">Weekends</span></div><div class="chip"><span class="ar-text">في أي وقت</span><span class="en-text">Anytime</span></div><div class="chip"><span class="ar-text">تواريخ محددة</span><span class="en-text">Specific dates</span></div></div></div>
+    <div class="form-g"><label><span class="ar-text">السعر (درهم) — فارغ للإعارة المجانية</span><span class="en-text">Price (AED) — blank to offer free</span></label><input type="number" placeholder-ar="مثلاً: 80 للرحلة" placeholder-en="e.g. 80 per trip"/></div>
+    <div class="form-g"><label><span class="ar-text">وصف مختصر</span><span class="en-text">Short description</span></label><textarea rows="3" placeholder-ar="مثلاً: بيك أب ١ طن، مناسب لنقل المحاصيل..." placeholder-en="e.g. 1-ton pickup, suitable for farm transport..."></textarea></div>
+    <div class="trust-box"><p class="trust-ttl ar-text">من يرى عرضك؟</p><p class="trust-ttl en-text">Who sees this listing?</p><div class="trust-opts"><label class="trust-opt"><input type="radio" name="tr2"/><i class="ti ti-home"></i><span class="ar-text">العائلة والجيران</span><span class="en-text">Family &amp; neighbors</span></label><label class="trust-opt"><input type="radio" name="tr2" checked/><i class="ti ti-shield-check"></i><span class="ar-text">سكان القاع المعتمدون</span><span class="en-text">Verified Al Quaa residents</span></label><label class="trust-opt"><input type="radio" name="tr2"/><i class="ti ti-world"></i><span class="ar-text">عام</span><span class="en-text">Public</span></label></div></div>
+    <div class="biz-tip show" id="biz-tip"><div class="biz-tip-hd"><i class="ti ti-rocket"></i><span class="ar-text">فكرة مشروع صغير</span><span class="en-text">Micro-business idea</span></div><p class="ar-text" id="biz-ar">لديك بيك أب + أمسيات فارغة → خدمة توصيل محلية مسائية</p><p class="en-text" id="biz-en">You have a pickup + free evenings → evening local delivery service</p></div>
+    <button class="btn btn-green" onclick="go('pg-home')"><span class="ar-text">نشر العرض</span><span class="en-text">Post listing</span> <i class="ti ti-check"></i></button>
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ══ URGENT ══ -->
+<div id="pg-urgent" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">طلبات عاجلة</span><span class="en-text">Urgent requests</span></h2></div>
+  <div class="page-body pad"><p class="res-meta ar-text">طلبات تحتاج ردًا اليوم</p><p class="res-meta en-text">Requests needing a response today</p><div id="urgent-list"></div></div>
+</div>
+
+<!-- ══ PROFILE ══ -->
+<div id="pg-profile" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">حسابي</span><span class="en-text">My profile</span></h2></div>
+  <div class="page-body pad">
+    <div class="prof-hero"><div class="prof-av">م</div><div><h3>محمد العلي</h3><p><i class="ti ti-shield-check"></i><span class="ar-text">سكان معتمد · القاع</span><span class="en-text">Verified · Al Quaa</span></p><p style="margin-top:5px"><i class="ti ti-star-filled" style="color:var(--sand-300)"></i> <span style="color:rgba(237,217,163,.9)">4.8</span></p></div></div>
+    <div class="stats"><div class="stat"><span class="stat-n">١٢</span><small class="ar-text">طلباً منجزاً</small><small class="en-text">Requests done</small></div><div class="stat"><span class="stat-n">٥</span><small class="ar-text">عروضاً نشطة</small><small class="en-text">Active listings</small></div><div class="stat"><span class="stat-n">4.8</span><small class="ar-text">التقييم</small><small class="en-text">Rating</small></div></div>
+    <div class="menu">
+      <div class="mitem"><i class="ti ti-list mi"></i><span class="ar-text">عروضي</span><span class="en-text">My listings</span><i class="ti ti-chevron-left ma"></i></div>
+      <div class="mitem"><i class="ti ti-history mi"></i><span class="ar-text">سجل الطلبات</span><span class="en-text">Request history</span><i class="ti ti-chevron-left ma"></i></div>
+      <div class="mitem"><i class="ti ti-star mi"></i><span class="ar-text">تقييماتي</span><span class="en-text">My reviews</span><i class="ti ti-chevron-left ma"></i></div>
+      <div class="mitem" onclick="toggleLang()"><i class="ti ti-language mi"></i><span class="ar-text">اللغة: عربي</span><span class="en-text">Language: English</span><i class="ti ti-chevron-left ma"></i></div>
+      <div class="mitem red"><i class="ti ti-logout mi"></i><span class="ar-text">تسجيل الخروج</span><span class="en-text">Sign out</span></div>
+    </div>
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ══ NOTIFICATIONS ══ -->
+<div id="pg-notifs" class="page">
+  <div class="hdr"><button class="back-btn" onclick="go('pg-home')"><i class="ti ti-arrow-right"></i></button><h2><span class="ar-text">الإشعارات</span><span class="en-text">Notifications</span></h2></div>
+  <div class="page-body pad" id="notifs-list"></div>
+</div>
+
+<script>
+const DATA=[
+  {id:1,cat:'water',ico:'ti-droplet',cls:'water',ar:'خزان مياه ٥٠٠٠ لتر',en:'Water tanker 5,000L',dar:'متاح ٤م–٨م اليوم',den:'Available 4–8 PM today',d:'٤',de:'4',p:'٢٠٠',pe:'200',tags:[{ar:'توصيل',en:'Delivery'},{ar:'اليوم',en:'Today'}]},
+  {id:2,cat:'gen',ico:'ti-plug',cls:'gen',ar:'مولد كهربائي ١٥ كيلوواط',en:'Generator 15 kW',dar:'سالم · نهايات الأسبوع',den:'Salem · weekends',d:'٦',de:'6',p:'١٥٠',pe:'150',tags:[{ar:'توصيل',en:'Delivery'}]},
+  {id:3,cat:'vehicle',ico:'ti-truck',cls:'vehicle',ar:'بيك أب ٤×٤ + سائق',en:'4×4 pickup + driver',dar:'توصيلات المزارع',den:'Farm deliveries',d:'٨',de:'8',p:'١٠٠',pe:'100',tags:[]},
+  {id:4,cat:'event',ico:'ti-tent',cls:'event',ar:'خيمة + ٣٠ كرسي',en:'Event tent + 30 chairs',dar:'مزرعة الظاهري',den:'Al Dhaheri farm',d:'١١',de:'11',p:'٣٠٠',pe:'300',tags:[]},
+  {id:5,cat:'farm',ico:'ti-plant-2',cls:'farm',ar:'أدوات حصاد النخيل',en:'Date palm harvest tools',dar:'موسم الحصاد',den:'Harvest season',d:'٣',de:'3',p:'٥٠',pe:'50',tags:[{ar:'موسمي',en:'Seasonal'}]},
+  {id:6,cat:'water',ico:'ti-droplet',cls:'water',ar:'خزان مياه ٣٠٠٠ لتر',en:'Water tanker 3,000L',dar:'أبو سالم · كل يوم',den:'Abu Salem · daily',d:'٥',de:'5',p:'١٢٠',pe:'120',tags:[]},
+  {id:7,cat:'labor',ico:'ti-users',cls:'labor',ar:'عمال زراعيون مؤقتون',en:'Temporary farm workers',dar:'٣ عمال هذا الأسبوع',den:'3 workers this week',d:'٧',de:'7',p:'٢٠٠',pe:'200',tags:[{ar:'يومي',en:'Daily'}]},
+  {id:8,cat:'cold',ico:'ti-snowflake',cls:'cold',ar:'نقل مبرد للمنتجات',en:'Cold transport for produce',dar:'توصيل لأسواق العين',den:'Delivery to Al Ain markets',d:'٩',de:'9',p:'٢٥٠',pe:'250',tags:[{ar:'أسواق',en:'Markets'}]},
+];
+const URGENT_D=[
+  {ico:'ti-droplet',cls:'water',ar:'خزان مياه عاجل',en:'Urgent water tanker',dar:'مزرعة الشمال — الحاجة الآن',den:'North Farm — needed now',tar:'قبل ٢٠ دقيقة',ten:'20 min ago'},
+  {ico:'ti-plug',cls:'gen',ar:'مولد كهربائي الليلة',en:'Generator tonight',dar:'حفل عائلي — ميزانية ٢٠٠ درهم',den:'Family event — budget 200 AED',tar:'قبل ١ ساعة',ten:'1 hr ago'},
+  {ico:'ti-steering-wheel',cls:'driver',ar:'سائق ضروري غداً',en:'Driver needed tomorrow',dar:'رحلة إلى العين — صباح مبكر',den:'Trip to Al Ain — early morning',tar:'قبل ٢ ساعة',ten:'2 hrs ago'},
+];
+const NOTIFS_D=[
+  {ar:'محمد المنصوري قبل طلبك للمولد',en:'Mohammed accepted your generator request',t:'٥ دقائق',te:'5 min',r:false},
+  {ar:'عرض جديد قريب: خزان مياه ٤ كم',en:'New listing nearby: water tanker 4 km',t:'٣٠ دقيقة',te:'30 min',r:false},
+  {ar:'قيّم تجربتك مع سالم الظاهري',en:'Rate your experience with Salem',t:'ساعتان',te:'2 hrs',r:true},
+  {ar:'انضم ٣ أعضاء جدد من القاع الشمالية',en:'3 new members joined from North Al Quaa',t:'يوم',te:'1 day',r:true},
+];
+const BIZ={
+  vehicle:{ar:'لديك بيك أب + أمسيات فارغة → خدمة توصيل محلية مسائية',en:'Pickup + free evenings → evening local delivery service'},
+  water:{ar:'لديك خزان مياه → توصيل مياه للمزارع والأسر',en:'Water tanker → water delivery for farms and households'},
+  gen:{ar:'لديك مولد → تأجيره للفعاليات والمزارع',en:'Generator → rent it to events and farms when idle'},
+  farm:{ar:'لديك أدوات مزرعة → تأجيرها موسم الحصاد',en:'Farm tools → rent them during harvest season'},
+  event:{ar:'لديك خيمة → خدمة تأجير للمناسبات المحلية',en:'Tent & chairs → event rental for local occasions'},
+  cold:{ar:'لديك تخزين مبرد → توصيل المنتجات للأسواق',en:'Cold storage → produce delivery to markets'},
+  labor:{ar:'لديك مهارة → قدمها كخدمة بالساعة أو اليوم',en:'You have a skill → offer it as hourly or daily service'},
+};
+let lang='ar';
+
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function setNav(el){document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));el.classList.add('on')}
+function toggleLang(){
+  lang=lang==='ar'?'en':'ar';
+  document.body.classList.toggle('lang-ar',lang==='ar');
+  document.body.classList.toggle('lang-en',lang==='en');
+  document.documentElement.setAttribute('lang',lang);
+  document.documentElement.setAttribute('dir',lang==='ar'?'rtl':'ltr');
+  document.querySelectorAll('[placeholder-ar],[placeholder-en]').forEach(el=>{
+    const ph=lang==='ar'?el.getAttribute('placeholder-ar'):el.getAttribute('placeholder-en');
+    if(ph)el.placeholder=ph;
+  });
+}
+function card(item){return`<div class="lcard" onclick="go('pg-matches')"><div class="lci ${item.cls}"><i class="ti ${item.ico}"></i></div><div class="lci-info"><div class="lci-name ar-text">${item.ar}</div><div class="lci-name en-text">${item.en}</div><div class="lci-det ar-text">${item.dar}</div><div class="lci-det en-text">${item.den}</div>${item.tags.length?`<div class="lci-tags">${item.tags.map(t=>`<span class="ltag ar-text">${t.ar}</span><span class="ltag en-text">${t.en}</span>`).join('')}</div>`:''}</div><div class="lci-meta"><div class="lci-dist ar-text">${item.d} كم</div><div class="lci-dist en-text">${item.de} km</div><div class="lci-price">${item.pe} AED</div></div></div>`}
+function render(id,items){const el=document.getElementById(id);if(el)el.innerHTML=items.map(card).join('')+'<div class="sp-lg"></div>'}
+function fcat(el,cat,ctx){el.parentElement.querySelectorAll('.cpill').forEach(p=>p.classList.remove('on'));el.classList.add('on');const f=cat==='all'?DATA:DATA.filter(l=>l.cat===cat);render('browse-list',f);if(!ctx)render('home-list',(cat==='all'?DATA:f).slice(0,4))}
+function lsrch(q){const lo=q.toLowerCase();render('browse-list',DATA.filter(l=>l.ar.includes(q)||l.en.toLowerCase().includes(lo)||l.dar.includes(q)||l.den.toLowerCase().includes(lo)))}
+function openWA(num){const msg=lang==='ar'?'مرحباً، رأيت عرضك على موارد القوع وأريد التفاصيل':'Hello, I saw your listing on Mawared Al Quaa and would like details';window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`,'_blank')}
+function bizTip(){const v=document.getElementById('offer-type').value,t=BIZ[v],b=document.getElementById('biz-tip');if(t){b.classList.add('show');document.getElementById('biz-ar').textContent=t.ar;document.getElementById('biz-en').textContent=t.en}else b.classList.remove('show')}
+function init(){
+  render('home-list',DATA.slice(0,4));
+  render('browse-list',DATA);
+  document.getElementById('urgent-list').innerHTML=URGENT_D.map(u=>`<div class="ucard"><div class="uc-top"><div class="uc-ico"><i class="ti ${u.ico}"></i></div><div class="uc-name"><strong class="ar-text">${u.ar}</strong><strong class="en-text">${u.en}</strong><p class="ar-text">${u.dar}</p><p class="en-text">${u.den}</p></div><div class="uc-time ar-text">${u.tar}</div><div class="uc-time en-text">${u.ten}</div></div><div class="row-btns"><button class="btn btn-wa"><i class="ti ti-brand-whatsapp"></i> WhatsApp</button><button class="btn btn-confirm ar-text" style="font-size:14px">يمكنني المساعدة</button><button class="btn btn-confirm en-text" style="font-size:14px">I can help</button></div></div>`).join('');
+  document.getElementById('notifs-list').innerHTML=NOTIFS_D.map(n=>`<div class="nitem"><div class="ndot2 ${n.r?'read':''}"></div><div><div class="ntext ar-text">${n.ar}</div><div class="ntext en-text">${n.en}</div><div class="ntime ar-text">${n.t}</div><div class="ntime en-text">${n.te}</div></div></div>`).join('');
+  document.querySelectorAll('[placeholder-ar]').forEach(el=>{el.placeholder=el.getAttribute('placeholder-ar')});
+  document.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const g=c.closest('.chips');if(!g)return;g.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));c.classList.add('on')});
+  document.querySelectorAll('.otp-box').forEach((b,i,a)=>{b.addEventListener('input',()=>{if(b.value&&i<a.length-1)a[i+1].focus()})});
+}
+init();
+</script>
+</body>
+</html>
